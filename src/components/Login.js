@@ -10,6 +10,10 @@ const [data, setData] = useState({ username: '', password: '' })
     alert(JSON.stringify(data))
   }
 
+  function handleInputChange(e, name) {
+    setData({ ...data, [name]: e.target.value })
+  }
+
   return (
     <>
       <h1>Login Form</h1>
@@ -18,14 +22,14 @@ const [data, setData] = useState({ username: '', password: '' })
           Username:
           <input type="text"
             value={data.username}
-            onChange={(e) => setData({...data, username: e.target.value})}/>
+            onChange={(e) => handleInputChange(e, 'username')}/>
         </label>
         <label>
           Password:
           <input
             type="password"
             value={data.password}
-            onChange={(e) => setData({...data, password: e.target.value})}
+            onChange={(e) => handleInputChange(e, 'password')}
           />
         </label>
         <button type="submit">Login</button>
